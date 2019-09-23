@@ -1,11 +1,14 @@
 package groupId.QuantumOperations;
 
 import Operations.Complex;
+import Operations.MatrixCalculator;
 import Operations.MatrizComplex;
+import Operations.VectorComplex;
 
-public class ExperimentCracks {
+public class ExperimentSlits {
 
-	public static MatrizComplex cracksProb(int number) {
+
+	public static MatrizComplex slitsProb(int number) {
 		int blancas = (number * 2) + 1;
 		int matsize = 1 + number + blancas;
 		double n1 = 1 / (float) number;
@@ -15,14 +18,14 @@ public class ExperimentCracks {
 
 		for (int i = 0; i < mat1.getFilas(); i++) {
 			for (int j = 0; j < mat1.getColumnas(); j++) {
-				 mat1.addComplex(i, j, new Complex(0, 0));
+				mat1.addComplex(i, j, new Complex(0, 0));
 			}
 		}
 
 		for (int i = 0; i < mat1.getFilas(); i++) {
 			for (int j = 0; j < mat1.getColumnas(); j++) {
 				//
-				if (j > 0 && j <= number && i ==0) {
+				if (j > 0 && j <= number && i == 0) {
 					mat1.addComplex(i, j, new Complex(n1, 0));
 				}
 				if (1 <= j && j <= number && i == 1) {
@@ -43,4 +46,5 @@ public class ExperimentCracks {
 
 	}
 
+	
 }
