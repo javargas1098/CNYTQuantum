@@ -47,5 +47,18 @@ public class MarbleExperiment {
 		}
 		return stateVector;
 	}
+	 public VectorComplex clickBack() {
+		 MatrizComplex transBooleanMatrix = MatrixCalculator.trasMatrix(booleanMatrix);
+	        stateVector = MatrixCalculator.actionMatrix(transBooleanMatrix, stateVector);
+	        return stateVector;
+	    }
+
+	    public VectorComplex clickBack(int n){
+	    	MatrizComplex transBooleanMatrix = MatrixCalculator.trasMatrix(booleanMatrix);
+	        for (int i = 0; i < n; i++) {
+	            stateVector = MatrixCalculator.actionMatrix(transBooleanMatrix, stateVector);
+	        }
+	        return stateVector;
+	    }
 
 }
