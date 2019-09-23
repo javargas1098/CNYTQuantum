@@ -135,15 +135,15 @@ public class MarbleTest {
 
 	        marblesExperiment.createStateVector(stateVector);
 
-	        VectorComplex answer = marblesExperiment.clickForward(10);
+	        VectorComplex answer = marblesExperiment.clickBack(10);
 
 	        VectorComplex answerExpected = new VectorComplex(6);
-	        answerExpected.addToMatrix(0, new Complex(0, 0));
-	        answerExpected.addToMatrix(1, new Complex(0, 0));
-	        answerExpected.addToMatrix(2, new Complex(9, 0));
+	        answerExpected.addToMatrix(0, new Complex(9, 0));
+	        answerExpected.addToMatrix(1, new Complex(12, 0));
+	        answerExpected.addToMatrix(2, new Complex(1, 0));
 	        answerExpected.addToMatrix(3, new Complex(5, 0));
-	        answerExpected.addToMatrix(4, new Complex(12, 0));
-	        answerExpected.addToMatrix(5, new Complex(1, 0));
+	        answerExpected.addToMatrix(4, new Complex(9, 0));
+	        answerExpected.addToMatrix(5, new Complex(12, 0));
 
 	        assertEquals(answerExpected, answer);
 
