@@ -13,8 +13,6 @@ public class QuantumSystem {
 	// PROBABILITY
 	public static double probability(MatrizComplex ket, int x) {
 		double normaKet = MatrixCalculator.norMatriz(ket);
-		System.out.println(normaKet);
-		System.out.println(ket.getPosition(x, 0).setModule());
 		double probabilidad = Math.pow(ket.getPosition(x, 0).setModule(), 2) / Math.pow(normaKet, 2);
 		return probabilidad;
 	}
@@ -43,12 +41,12 @@ public class QuantumSystem {
 	public static Complex mean(MatrizComplex mat1, VectorComplex ket) {
 		if (!MatrixCalculator.isHermitian(mat1)) {
 			System.out.println("La matriz no es Hermitian");
-			return null;
-		} else {
-			VectorComplex accion = MatrixCalculator.actionMatrix(mat1, ket);
+		} 
+			//System.out.println(ket.toString());
+		    VectorComplex accion = MatrixCalculator.actionMatrix(mat1, ket);
 			Complex media = MatrixCalculator.innerTwoMatriz(accion, ket);
 			return media;
-		}
+		
 	}
 	
 	public static VectorComplex valProp(MatrizComplex mat1) throws IOException {

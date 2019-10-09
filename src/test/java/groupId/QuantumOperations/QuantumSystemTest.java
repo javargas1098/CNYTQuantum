@@ -1,11 +1,14 @@
 package groupId.QuantumOperations;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
 import Operations.Complex;
 import Operations.MatrizComplex;
+import Operations.VectorComplex;
+
 public class QuantumSystemTest {
 	@Test
 	public void probabilityTest() {
@@ -37,6 +40,83 @@ public class QuantumSystemTest {
 		double Compare1 = Math.pow(1.0, 2) / Math.pow(19.0, 2);
 		assertEquals(result1, Compare1);
 
+	}
+
+	@Test
+	public void transicionalBraKetTest() {
+		VectorComplex ket1 = new VectorComplex(2);
+		VectorComplex ket2 = new VectorComplex(2);
+		Complex c1 = new Complex(Math.sqrt(2) / 2.0, -0);
+		Complex c2 = new Complex(0, Math.sqrt(2) / 2.0);
+		Complex c3 = new Complex(0, Math.sqrt(2) / 2.0);
+		Complex c4 = new Complex(-Math.sqrt(2) / 2.0, 0);
+
+		ket1.addToMatrix(0, c1);
+		ket1.addToMatrix(1, c2);
+
+		ket2.addToMatrix(0, c3);
+		ket2.addToMatrix(1, c4);
+
+		Complex result = QuantumSystem.probabilityTwoKets(ket1, ket2);
+		Complex result1 = new Complex(Math.round(result.getReal() * 100.0) / 100.0,
+				Math.round(result.getImaginario() * 100.0) / 100.0);
+		Complex resultToCompare1 = new Complex(0, -1.0);
+		assertEquals(result1, resultToCompare1);
+
+	}
+
+	@Test
+	public void obsTest() {
+		MatrizComplex mat1 = new MatrizComplex(2, 2);
+		VectorComplex ket2 = new VectorComplex(2);
+
+		Complex c1 = new Complex(1, 0);
+		Complex c2 = new Complex(0, -1);
+		Complex c3 = new Complex(0, 1);
+		Complex c4 = new Complex(2, 0);
+		Complex c5 = new Complex(Math.sqrt(2) / 2.0, 0);
+		Complex c6 = new Complex(0, Math.sqrt(2) / 2.0);
+
+		mat1.addComplex(0, 0, c1);
+		mat1.addComplex(0, 1, c2);
+		mat1.addComplex(1, 0, c3);
+		mat1.addComplex(1, 1, c4);
+
+		ket2.addToMatrix(0, c5);
+		ket2.addToMatrix(1, c6);
+
+		Complex result = QuantumSystem.mean(mat1, ket2);
+		Complex result1 = new Complex(Math.round(result.getReal() * 100.0) / 100.0,
+				Math.round(result.getImaginario() * 100.0) / 100.0);
+		Complex resultToCompare1 = new Complex(2.5, 0);
+		assertEquals(result1, resultToCompare1);
+	}
+	
+	@Test
+	public void varianzaTest() {
+
+		MatrizComplex mat1 = new MatrizComplex(2, 2);
+		VectorComplex ket2 = new VectorComplex(2);
+
+		Complex c1 = new Complex(1, 0);
+		Complex c2 = new Complex(0, -1);
+		Complex c3 = new Complex(0, 1);
+		Complex c4 = new Complex(2, 0);
+		Complex c5 = new Complex(Math.sqrt(2) / 2.0, 0);
+		Complex c6 = new Complex(0, Math.sqrt(2) / 2.0);
+
+		mat1.addComplex(0, 0, c1);
+		mat1.addComplex(0, 1, c2);
+		mat1.addComplex(1, 0, c3);
+		mat1.addComplex(1, 1, c4);
+
+		ket2.addToMatrix(0, c5);
+		ket2.addToMatrix(1, c6);
+		
+		 Complex result = QuantumSystem.variance(mat1, ket2);
+         Complex result1 = new Complex(Math.round(result.getReal() * 100.0) / 100.0, Math.round(result.getImaginario() * 100.0) / 100.0);
+         Complex resultToCompare1 = new Complex(6.5, 0);
+         assertEquals(result1, resultToCompare1);
 	}
 
 }

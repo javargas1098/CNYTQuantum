@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.github.javargas1098</groupId>
 			<artifactId>CNYTLbs</artifactId>		
-			<version>852f47b</version>
+			<version>ab4dd71</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
