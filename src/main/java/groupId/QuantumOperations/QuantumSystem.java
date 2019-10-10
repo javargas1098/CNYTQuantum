@@ -58,4 +58,12 @@ public class QuantumSystem {
         }
         return valProps;
     }
+	
+	 public static VectorComplex dinamica(int times, VectorComplex ket, MatrizComplex sequence) {
+	        VectorComplex finalState = ket;
+	        for (int i = 0; i < times; i++) {
+	            finalState = MatrixCalculator.actionMatrix(sequence, finalState);
+	        }
+	        return finalState;
+	    }
 }
